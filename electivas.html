@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Electivas - Administración Ambiental y de los Recursos Naturales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="pantalla-bienvenida" class="pantalla-bienvenida">
+  <h1>Bienvenida, Vanessa 💜</h1>
+  <p>Explora y selecciona tus electivas para completar tu malla curricular.</p>
+  <button onclick="iniciarElectivas()">Comenzar</button>
+</div>
+
+<div id="contenido-electivas" style="display: none;">
+  <header class="header">
+    <h1>Electivas - Administración Ambiental y de los Recursos Naturales</h1>
+    <div class="botones-top">
+      <button onclick="reiniciarElectivas()">🔄 Reiniciar</button>
+      <button onclick="exportarPDF()">📄 Exportar PDF</button>
+      <button onclick="toggleModo()">🌙 Modo Oscuro / Claro</button>
+      <input type="text" id="buscador" onkeyup="buscarElectiva()" placeholder="Buscar electiva...">
+    </div>
+    <p><strong>Créditos completados:</strong> <span id="creditos-electivas">0</span></p>
+  </header>
+
+  <div class="contenedor-electivas">
+    <div class="bloque-electiva">
+      <h2 class="titulo-fucsia">Electiva interdisciplinar básica común</h2>
+      <div class="materia electiva" data-nombre="Educación ambiental" onclick="toggleElectiva(this, 3)">🌸 Educación ambiental (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Emprendimiento solidario" onclick="toggleElectiva(this, 3)">🌸 Emprendimiento solidario (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Inclusión social" onclick="toggleElectiva(this, 3)">🌸 Inclusión social (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Sostenibilidad, desarrollo y calidad de vida" onclick="toggleElectiva(this, 3)">🌸 Sostenibilidad, desarrollo y calidad de vida (3 créditos)</div>
+    </div>
+
+    <div class="bloque-electiva">
+      <h2 class="titulo-fucsia">Electiva campo de formación complementario</h2>
+      <div class="materia electiva" data-nombre="Proyecto de vida" onclick="toggleElectiva(this, 2)">🌼 Proyecto de vida (2 créditos)</div>
+      <div class="materia electiva" data-nombre="Salud oral" onclick="toggleElectiva(this, 2)">🌼 Salud oral (2 créditos)</div>
+      <div class="materia electiva" data-nombre="Teatro" onclick="toggleElectiva(this, 1)">🌼 Teatro (1 crédito)</div>
+      <div class="materia electiva" data-nombre="Guitarra" onclick="toggleElectiva(this, 1)">🌼 Guitarra (1 crédito)</div>
+      <div class="materia electiva" data-nombre="La persona como ser trascendente" onclick="toggleElectiva(this, 2)">🌼 La persona como ser trascendente (2 créditos)</div>
+      <div class="materia electiva" data-nombre="Protocolo" onclick="toggleElectiva(this, 1)">🌼 Protocolo (1 crédito)</div>
+      <div class="materia electiva" data-nombre="Hoja de vida" onclick="toggleElectiva(this, 1)">🌼 Hoja de vida (1 crédito)</div>
+      <div class="materia electiva" data-nombre="Actividad física y para la salud" onclick="toggleElectiva(this, 2)">🌼 Actividad física y para la salud (2 créditos)</div>
+    </div>
+
+    <div class="bloque-electiva">
+      <h2 class="titulo-fucsia">Electiva disciplinar común</h2>
+      <div class="materia electiva" data-nombre="Sociología rural" onclick="toggleElectiva(this, 2)">🌻 Sociología rural (2 créditos)</div>
+      <div class="materia electiva" data-nombre="Antropología rural" onclick="toggleElectiva(this, 2)">🌻 Antropología rural (2 créditos)</div>
+      <div class="materia electiva" data-nombre="Herramientas participativas" onclick="toggleElectiva(this, 2)">🌻 Herramientas participativas (2 créditos)</div>
+      <div class="materia electiva" data-nombre="Formulación de proyectos productivos" onclick="toggleElectiva(this, 2)">🌻 Formulación de proyectos productivos (2 créditos)</div>
+    </div>
+
+    <div class="bloque-electiva">
+      <h2 class="titulo-fucsia">Electiva disciplinar específica</h2>
+      <h3 class="subtitulo-lila">Línea 1. Gestión ambiental y capital natural</h3>
+      <div class="materia electiva" data-nombre="Definición de indicadores ambientales" onclick="toggleElectiva(this, 3)">🌿 Definición de indicadores ambientales (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Evaluación de indicadores de ecoeficiencia" onclick="toggleElectiva(this, 3)">🌿 Evaluación de indicadores de ecoeficiencia (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Manejo de recursos naturales y energéticos" onclick="toggleElectiva(this, 3)">🌿 Manejo de recursos naturales y energéticos (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Implementación de planes de manejo ambiental" onclick="toggleElectiva(this, 3)">🌿 Implementación de planes de manejo ambiental (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Cambio climático" onclick="toggleElectiva(this, 3)">🌿 Cambio climático (3 créditos)</div>
+
+      <h3 class="subtitulo-lila">Línea 2. Administración, emprendimiento e innovación</h3>
+      <div class="materia electiva" data-nombre="Análisis de ciclo de vida" onclick="toggleElectiva(this, 3)">💼 Análisis de ciclo de vida (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Gestión ambiental estratégica" onclick="toggleElectiva(this, 3)">💼 Gestión ambiental estratégica (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Generación de ideas de negocios" onclick="toggleElectiva(this, 3)">💼 Generación de ideas de negocios (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Responsabilidad social empresarial" onclick="toggleElectiva(this, 3)">💼 Responsabilidad social empresarial (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Liderazgo, pensamiento creativo e innovador" onclick="toggleElectiva(this, 3)">💼 Liderazgo, pensamiento creativo e innovador (3 créditos)</div>
+
+      <h3 class="subtitulo-lila">Línea 3. Salud ambiental</h3>
+      <div class="materia electiva" data-nombre="Red de monitoreo y calidad del aire" onclick="toggleElectiva(this, 3)">🩺 Red de monitoreo y calidad del aire (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Control de la contaminación de los alimentos" onclick="toggleElectiva(this, 3)">🩺 Control de la contaminación de los alimentos (3 créditos)</div>
+      <div class="materia electiva" data-nombre="Entornos de trabajo saludables" onclick="toggleElectiva(this, 3)">🩺 Entornos de trabajo saludables (3 créditos)</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function iniciarElectivas() {
+  document.getElementById("pantalla-bienvenida").style.display = "none";
+  document.getElementById("contenido-electivas").style.display = "block";
+  cargarElectivas();
+}
+
+function toggleElectiva(element, creditos) {
+  const nombre = element.getAttribute("data-nombre");
+  const estaSeleccionada = element.classList.toggle("tachada");
+  localStorage.setItem(nombre, estaSeleccionada);
+  contarCreditosElectiva();
+}
+
+function contarCreditosElectiva() {
+  const materias = document.querySelectorAll(".materia.electiva.tachada");
+  let suma = 0;
+  materias.forEach(m => {
+    const texto = m.textContent;
+    const match = texto.match(/\((\d+) créditos\)/);
+    if (match) suma += parseInt(match[1]);
+  });
+  document.getElementById("creditos-electivas").textContent = suma;
+}
+
+function cargarElectivas() {
+  const materias = document.querySelectorAll(".materia.electiva");
+  materias.forEach(m => {
+    const nombre = m.getAttribute("data-nombre");
+    if (localStorage.getItem(nombre) === "true") {
+      m.classList.add("tachada");
+    }
+  });
+  contarCreditosElectiva();
+}
+
+function reiniciarElectivas() {
+  if (confirm("¿Reiniciar selección de electivas?")) {
+    const materias = document.querySelectorAll(".materia.electiva");
+    materias.forEach(m => {
+      const nombre = m.getAttribute("data-nombre");
+      localStorage.setItem(nombre, false);
+      m.classList.remove("tachada");
+    });
+    contarCreditosElectiva();
+  }
+}
+
+function toggleModo() {
+  document.body.classList.toggle("modo-oscuro");
+}
+
+function exportarPDF() {
+  window.print();
+}
+
+function buscarElectiva() {
+  const input = document.getElementById("buscador").value.toLowerCase();
+  const materias = document.querySelectorAll(".materia.electiva");
+  materias.forEach(m => {
+    const nombre = m.getAttribute("data-nombre").toLowerCase();
+    m.style.display = nombre.includes(input) ? "flex" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
