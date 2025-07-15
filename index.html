@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Administración Ambiental y de los Recursos Naturales</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Pantalla de bienvenida -->
+  <div id="pantalla-bienvenida">
+    <h1>¡Bienvenida, Vanessa Socarras Vilches! 🌿</h1>
+    <p>Estás a punto de explorar tu malla curricular interactiva para el pregrado en <strong>Administración Ambiental y de los Recursos Naturales</strong>.</p>
+    <button onclick="iniciarMalla()">Empezar</button>
+  </div>
+
+  <!-- Contenido de la malla -->
+  <div id="contenido-malla" style="display: none;">
+    <header>
+      <h1 class="titulo-malla">ADMINISTRACIÓN AMBIENTAL Y DE LOS RECURSOS NATURALES</h1>
+      <div class="botones-superiores">
+        <button onclick="reiniciarMalla()">🔄 Reiniciar</button>
+        <button onclick="exportarPDF()">📄 Exportar PDF</button>
+        <button onclick="toggleModo()">🌙/☀️</button>
+      </div>
+    </header>
+
+    <section id="barra-progreso">
+      <div id="progreso-creditos">Créditos completados: <span id="creditos-completados">0</span> / <span id="creditos-totales">0</span></div>
+      <div class="barra"><div class="relleno" id="relleno-barra"></div></div>
+    </section>
+
+    <section class="buscador">
+      <input type="text" id="buscador" placeholder="🔍 Buscar materia o electiva..." oninput="buscarMateria()"/>
+    </section>
+
+    <main id="malla-curricular">
+      <!-- Aquí se cargará la malla automáticamente con JavaScript -->
+    </main>
+
+    <section class="pendientes" id="pendientes-container" style="display:none;">
+      <h2>📌 Materias pendientes de periodos anteriores</h2>
+      <ul id="lista-pendientes"></ul>
+    </section>
+
+    <footer>
+      <a href="electivas.html" class="enlace-electivas">Ir a electivas</a>
+      <div class="linea-tiempo">
+        <span>Periodo 1</span><span>Periodo 2</span><span>Periodo 3</span><span>Periodo 4</span><span>Periodo 5</span><span>Periodo 6</span><span>Periodo 7</span><span>Periodo 8</span><span>Periodo 9</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+</body>
+</html>
